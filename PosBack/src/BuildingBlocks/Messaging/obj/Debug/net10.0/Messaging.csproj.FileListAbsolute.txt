@@ -1,0 +1,11 @@
+C:\Dev\GroceryPOS\PosBack\src\BuildingBlocks\Messaging\bin\Debug\net10.0\Messaging.deps.json
+C:\Dev\GroceryPOS\PosBack\src\BuildingBlocks\Messaging\bin\Debug\net10.0\Messaging.dll
+C:\Dev\GroceryPOS\PosBack\src\BuildingBlocks\Messaging\bin\Debug\net10.0\Messaging.pdb
+C:\Dev\GroceryPOS\PosBack\src\BuildingBlocks\Messaging\obj\Debug\net10.0\Messaging.GeneratedMSBuildEditorConfig.editorconfig
+C:\Dev\GroceryPOS\PosBack\src\BuildingBlocks\Messaging\obj\Debug\net10.0\Messaging.AssemblyInfoInputs.cache
+C:\Dev\GroceryPOS\PosBack\src\BuildingBlocks\Messaging\obj\Debug\net10.0\Messaging.AssemblyInfo.cs
+C:\Dev\GroceryPOS\PosBack\src\BuildingBlocks\Messaging\obj\Debug\net10.0\Messaging.csproj.CoreCompileInputs.cache
+C:\Dev\GroceryPOS\PosBack\src\BuildingBlocks\Messaging\obj\Debug\net10.0\Messaging.dll
+C:\Dev\GroceryPOS\PosBack\src\BuildingBlocks\Messaging\obj\Debug\net10.0\refint\Messaging.dll
+C:\Dev\GroceryPOS\PosBack\src\BuildingBlocks\Messaging\obj\Debug\net10.0\Messaging.pdb
+C:\Dev\GroceryPOS\PosBack\src\BuildingBlocks\Messaging\obj\Debug\net10.0\ref\Messaging.dll

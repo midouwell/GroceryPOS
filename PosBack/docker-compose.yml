@@ -1,0 +1,51 @@
+services:
+  gateway:
+    build:
+      context: .
+      dockerfile: src/Gateway/Gateway.Api/Dockerfile
+    ports:
+      - "5100:8080"
+    depends_on:
+      - identity
+      - products
+      - inventory
+      - sales
+      - payments
+      - customers
+      - reports
+
+  identity:
+    build:
+      context: .
+      dockerfile: src/Services/Identity/Identity.Api/Dockerfile
+    ports: ["5101:8080"]
+  products:
+    build:
+      context: .
+      dockerfile: src/Services/Products/Products.Api/Dockerfile
+    ports: ["5102:8080"]
+  inventory:
+    build:
+      context: .
+      dockerfile: src/Services/Inventory/Inventory.Api/Dockerfile
+    ports: ["5103:8080"]
+  sales:
+    build:
+      context: .
+      dockerfile: src/Services/Sales/Sales.Api/Dockerfile
+    ports: ["5104:8080"]
+  payments:
+    build:
+      context: .
+      dockerfile: src/Services/Payments/Payments.Api/Dockerfile
+    ports: ["5105:8080"]
+  customers:
+    build:
+      context: .
+      dockerfile: src/Services/Customers/Customers.Api/Dockerfile
+    ports: ["5106:8080"]
+  reports:
+    build:
+      context: .
+      dockerfile: src/Services/Reports/Reports.Api/Dockerfile
+    ports: ["5107:8080"]

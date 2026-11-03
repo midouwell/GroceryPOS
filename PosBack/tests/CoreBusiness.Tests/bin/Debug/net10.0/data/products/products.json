@@ -1,0 +1,30 @@
+[
+  {
+    "id": "5790db1363ff40ddbc982a077b5d2e9e",
+    "sku": "E2E-001",
+    "barcode": "628299999991",
+    "name": "E2E Milk",
+    "description": "Runtime test",
+    "category": "Dairy",
+    "unit": "2 L",
+    "price": 449,
+    "taxRate": 0,
+    "isActive": true,
+    "createdAt": "2026-11-02T10:04:36.6063136+00:00",
+    "updatedAt": null
+  },
+  {
+    "id": "e8a8a211ed024d8f82106f238f54b327",
+    "sku": "PRD-TEST-2",
+    "barcode": "628200000002",
+    "name": "Batter",
+    "description": "Test product",
+    "category": "Dairy",
+    "unit": "2 L",
+    "price": 349,
+    "taxRate": 0,
+    "isActive": true,
+    "createdAt": "2026-11-03T07:38:53.6679572+00:00",
+    "updatedAt": null
+  }
+]

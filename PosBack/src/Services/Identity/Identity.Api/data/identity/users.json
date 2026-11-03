@@ -1,0 +1,29 @@
+[
+  {
+    "id": "user-admin",
+    "userName": "admin",
+    "displayName": "Development Administrator",
+    "passwordHash": "pbkdf2-sha256$100000$MvupgjGb0D9mFaJr7Ccuyw==$B9z7QsK0TGjl5ZIuk5Yhu4mQLEzCKumQrE4zHNcbUkA=",
+    "role": "Administrator",
+    "isActive": true,
+    "createdAt": "2026-11-02T10:01:29.5329649+00:00"
+  },
+  {
+    "id": "user-manager",
+    "userName": "manager",
+    "displayName": "Development Manager",
+    "passwordHash": "pbkdf2-sha256$100000$y1tYiDKr1MhqyibebLPY2Q==$JgW9sPmAYaPAlahnFp\u002BdFtX\u002B8vWGvpJYdCtzM/YfBxk=",
+    "role": "Manager",
+    "isActive": true,
+    "createdAt": "2026-11-02T10:01:29.5793897+00:00"
+  },
+  {
+    "id": "user-cashier",
+    "userName": "cashier",
+    "displayName": "Development Cashier",
+    "passwordHash": "pbkdf2-sha256$100000$bo\u002BS8B9ZqaEpfxg6rVIlGQ==$XFBeYkxqtli6bU2a/ILORvwOl3RZ9cSRq2/IITaM4tY=",
+    "role": "Cashier",
+    "isActive": true,
+    "createdAt": "2026-11-02T10:01:29.6227816+00:00"
+  }
+]
