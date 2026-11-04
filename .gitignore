@@ -37,3 +37,5 @@ Thumbs.db
 # Local AI tools and resources - do not push to GitHub
 /PosFront/.agents/skills/archify/
 /PosFront/aie-book/
+
+/git-commands.md
