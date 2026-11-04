@@ -39,3 +39,6 @@ Thumbs.db
 /PosFront/aie-book/
 
 /git-commands.md
+
+# Backend documentation - keep local only
+/PosBack/docs/
