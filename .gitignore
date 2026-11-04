@@ -1,0 +1,39 @@
+@'
+# .NET build output
+**/bin/
+**/obj/
+**/TestResults/
+.vs/
+*.user
+*.suo
+
+# Angular / Node.js
+**/node_modules/
+**/dist/
+**/.angular/cache/
+**/coverage/
+
+# IDE
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# Local AI and browser profiles
+**/.codex/edge-cdp-profile/
+**/.codex/edge-debug-profile/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Local environment secrets
+.env
+.env.*
+!.env.example
+'@ | Set-Content .gitignore
+
+# Local AI tools and resources - do not push to GitHub
+/PosFront/.agents/skills/archify/
+/PosFront/aie-book/

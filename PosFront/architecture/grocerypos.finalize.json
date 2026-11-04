@@ -1,0 +1,605 @@
+{
+  "schemaVersion": 1,
+  "ok": false,
+  "command": "finalize",
+  "status": "fail",
+  "type": "architecture",
+  "quality": "showcase",
+  "startedAt": "2026-10-27T03:51:17.215Z",
+  "specification": {
+    "path": "C:\\Dev\\GroceryPOS\\PosFront\\architecture\\grocerypos.architecture.json",
+    "sha256": "165ee91f506f31992a9c1c752290628a9986d8fb262ad6ce46d268f65456e7bf",
+    "bytes": 24703
+  },
+  "artifact": {
+    "path": "C:\\Dev\\GroceryPOS\\PosFront\\architecture\\grocerypos.html",
+    "sha256": "07fb7b0f0b01c8b116f88cb8d314e6679a4dabe71d0722219613bd915aa388a5",
+    "bytes": 874377
+  },
+  "stages": {
+    "validate": {
+      "status": "pass",
+      "exitCode": 0,
+      "durationMs": null,
+      "execution": "embedded-in-deliver",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "C:\\Dev\\GroceryPOS\\PosFront\\.agents\\skills\\archify\\bin\\archify.mjs",
+        "deliver",
+        "architecture",
+        "C:\\Dev\\GroceryPOS\\PosFront\\architecture\\grocerypos.architecture.json",
+        "C:\\Dev\\GroceryPOS\\PosFront\\architecture\\grocerypos.html",
+        "--quality",
+        "showcase",
+        "--json"
+      ],
+      "receipt": {
+        "schemaVersion": 1,
+        "ok": true,
+        "command": "validate",
+        "specification": {
+          "sha256": "165ee91f506f31992a9c1c752290628a9986d8fb262ad6ce46d268f65456e7bf",
+          "bytes": 24703
+        },
+        "validation": {
+          "checksPassed": 9,
+          "checkCount": 9,
+          "compositionProfile": "showcase",
+          "compositionStatus": "pass",
+          "errors": 0,
+          "warnings": 0
+        }
+      }
+    },
+    "deliver": {
+      "status": "pass",
+      "exitCode": 0,
+      "durationMs": 1059,
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "C:\\Dev\\GroceryPOS\\PosFront\\.agents\\skills\\archify\\bin\\archify.mjs",
+        "deliver",
+        "architecture",
+        "C:\\Dev\\GroceryPOS\\PosFront\\architecture\\grocerypos.architecture.json",
+        "C:\\Dev\\GroceryPOS\\PosFront\\architecture\\grocerypos.html",
+        "--quality",
+        "showcase",
+        "--json"
+      ],
+      "receipt": {
+        "schemaVersion": 1,
+        "receiptId": "7f63c0a7-6560-485c-8bd9-d27360454999",
+        "ok": true,
+        "command": "deliver",
+        "type": "architecture",
+        "input": "C:\\Dev\\GroceryPOS\\PosFront\\architecture\\grocerypos.architecture.json",
+        "output": "C:\\Dev\\GroceryPOS\\PosFront\\architecture\\grocerypos.html",
+        "specification": {
+          "sha256": "165ee91f506f31992a9c1c752290628a9986d8fb262ad6ce46d268f65456e7bf",
+          "bytes": 24703
+        },
+        "artifact": {
+          "sha256": "07fb7b0f0b01c8b116f88cb8d314e6679a4dabe71d0722219613bd915aa388a5",
+          "bytes": 874377
+        },
+        "validation": {
+          "checksPassed": 9,
+          "checkCount": 9,
+          "compositionProfile": "showcase",
+          "compositionStatus": "pass",
+          "errors": 0,
+          "warnings": 0
+        },
+        "update": {
+          "status": "unavailable",
+          "installedVersion": null,
+          "availableVersion": null,
+          "releaseNotes": null,
+          "checkedAt": null,
+          "source": null,
+          "noticeRequired": false,
+          "noticeText": null,
+          "reason": "disabled"
+        }
+      }
+    },
+    "check": {
+      "status": "pass",
+      "exitCode": 0,
+      "durationMs": 367,
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "C:\\Dev\\GroceryPOS\\PosFront\\.agents\\skills\\archify\\bin\\archify.mjs",
+        "check",
+        "C:\\Dev\\GroceryPOS\\PosFront\\architecture\\grocerypos.html",
+        "--require-provenance"
+      ],
+      "receipt": {
+        "ok": true,
+        "file": "C:\\Dev\\GroceryPOS\\PosFront\\architecture\\grocerypos.html",
+        "artifact": {
+          "sha256": "07fb7b0f0b01c8b116f88cb8d314e6679a4dabe71d0722219613bd915aa388a5",
+          "bytes": 874377
+        },
+        "checks": [
+          {
+            "name": "single_svg",
+            "ok": true,
+            "details": [
+              "found 1 <svg> block(s)"
+            ]
+          },
+          {
+            "name": "finite_svg",
+            "ok": true,
+            "details": []
+          },
+          {
+            "name": "orthogonal_arrows",
+            "ok": true,
+            "details": []
+          },
+          {
+            "name": "label_route_clearance",
+            "ok": true,
+            "details": []
+          },
+          {
+            "name": "relationship_crossings",
+            "ok": true,
+            "details": []
+          },
+          {
+            "name": "relationship_corridors",
+            "ok": true,
+            "details": []
+          },
+          {
+            "name": "container_border_runs",
+            "ok": true,
+            "details": []
+          },
+          {
+            "name": "route_rhythm",
+            "ok": true,
+            "details": []
+          },
+          {
+            "name": "legend_clearance",
+            "ok": true,
+            "details": []
+          }
+        ],
+        "composition": {
+          "schemaVersion": 1,
+          "profile": "showcase",
+          "status": "pass",
+          "summary": {
+            "errors": 0,
+            "warnings": 0
+          },
+          "metrics": {
+            "properCrossings": 0,
+            "resolvedCrossovers": 5,
+            "ambiguousCorridors": 0,
+            "arrowheadCollisions": 0,
+            "containerBorderRuns": 0,
+            "labelRouteClearanceIssues": 0,
+            "labelCanvasOverflowIssues": 0,
+            "minLabelRouteClearance": 5.5,
+            "desktopReadabilityIssues": 0,
+            "viewportHeightIssues": 0,
+            "minProjectedNodeTextPx": 6.4,
+            "maxBends": 5,
+            "routesOverSuggestedBends": 9,
+            "maxStretch": 1.311,
+            "routesOverSuggestedStretch": 0,
+            "minSegmentPx": 11,
+            "minInteriorSegmentPx": 16.9,
+            "shortSegmentCount": 1,
+            "shortEndpointSegmentCount": 1,
+            "shortInteriorSegmentCount": 0,
+            "microSegmentCount": 0
+          },
+          "suggestedLimits": {
+            "bendsPerRelationship": 2,
+            "stretch": 1.35,
+            "segmentPx": 16,
+            "microSegmentPx": 8
+          },
+          "routeReview": {
+            "crossings": [
+              {
+                "left": {
+                  "id": "checkout-cart",
+                  "from": "checkout",
+                  "to": "state",
+                  "label": "add lines Ãƒâ€šÃ‚Â· tender cash",
+                  "collectionIndex": 7,
+                  "artifactIndex": 8
+                },
+                "right": {
+                  "id": "workspace-products",
+                  "from": "workspace",
+                  "to": "products",
+                  "label": "list / edit",
+                  "collectionIndex": 9,
+                  "artifactIndex": 10
+                },
+                "point": [
+                  929,
+                  262
+                ]
+              },
+              {
+                "left": {
+                  "id": "checkout-cart",
+                  "from": "checkout",
+                  "to": "state",
+                  "label": "add lines Ãƒâ€šÃ‚Â· tender cash",
+                  "collectionIndex": 7,
+                  "artifactIndex": 8
+                },
+                "right": {
+                  "id": "workspace-inventory",
+                  "from": "workspace",
+                  "to": "inventory",
+                  "label": "adjust stock",
+                  "collectionIndex": 10,
+                  "artifactIndex": 11
+                },
+                "point": [
+                  929,
+                  276
+                ]
+              },
+              {
+                "left": {
+                  "id": "workspace-inventory",
+                  "from": "workspace",
+                  "to": "inventory",
+                  "label": "adjust stock",
+                  "collectionIndex": 10,
+                  "artifactIndex": 11
+                },
+                "right": {
+                  "id": "state-product-read",
+                  "from": "state",
+                  "to": "products",
+                  "label": "uses product snapshot",
+                  "collectionIndex": 13,
+                  "artifactIndex": 14
+                },
+                "point": [
+                  968.9,
+                  330
+                ]
+              },
+              {
+                "left": {
+                  "id": "workspace-state",
+                  "from": "workspace",
+                  "to": "sales",
+                  "label": "sales history",
+                  "collectionIndex": 11,
+                  "artifactIndex": 12
+                },
+                "right": {
+                  "id": "products-memory",
+                  "from": "products",
+                  "to": "memory",
+                  "label": "seeded in memory",
+                  "collectionIndex": 17,
+                  "artifactIndex": 18
+                },
+                "point": [
+                  1070.5,
+                  547
+                ]
+              },
+              {
+                "left": {
+                  "id": "mock-sale",
+                  "from": "mockCheckout",
+                  "to": "sales",
+                  "label": "creates sale",
+                  "collectionIndex": 15,
+                  "artifactIndex": 16
+                },
+                "right": {
+                  "id": "products-memory",
+                  "from": "products",
+                  "to": "memory",
+                  "label": "seeded in memory",
+                  "collectionIndex": 17,
+                  "artifactIndex": 18
+                },
+                "point": [
+                  1084.5,
+                  547
+                ]
+              }
+            ],
+            "detours": [
+              {
+                "relationship": {
+                  "id": "app-routes",
+                  "from": "app",
+                  "to": "routes",
+                  "label": "bootstraps router",
+                  "collectionIndex": 1,
+                  "artifactIndex": 2
+                },
+                "bends": 3,
+                "stretch": 1.27
+              },
+              {
+                "relationship": {
+                  "id": "guards-auth",
+                  "from": "guards",
+                  "to": "auth",
+                  "label": "reads demo identity",
+                  "collectionIndex": 5,
+                  "artifactIndex": 6
+                },
+                "bends": 3,
+                "stretch": 1.311
+              },
+              {
+                "relationship": {
+                  "id": "checkout-cart",
+                  "from": "checkout",
+                  "to": "state",
+                  "label": "add lines Ãƒâ€šÃ‚Â· tender cash",
+                  "collectionIndex": 7,
+                  "artifactIndex": 8
+                },
+                "bends": 3,
+                "stretch": 1.122,
+                "directCorridorBlockers": [
+                  {
+                    "id": "workspace",
+                    "label": "Shared workspace page",
+                    "box": [
+                      700,
+                      230,
+                      220,
+                      78
+                    ]
+                  }
+                ]
+              },
+              {
+                "relationship": {
+                  "id": "workspace-inventory",
+                  "from": "workspace",
+                  "to": "inventory",
+                  "label": "adjust stock",
+                  "collectionIndex": 10,
+                  "artifactIndex": 11
+                },
+                "bends": 3,
+                "stretch": 1.243
+              },
+              {
+                "relationship": {
+                  "id": "workspace-state",
+                  "from": "workspace",
+                  "to": "sales",
+                  "label": "sales history",
+                  "collectionIndex": 11,
+                  "artifactIndex": 12
+                },
+                "bends": 3,
+                "stretch": 1.075
+              },
+              {
+                "relationship": {
+                  "id": "state-product-read",
+                  "from": "state",
+                  "to": "products",
+                  "label": "uses product snapshot",
+                  "collectionIndex": 13,
+                  "artifactIndex": 14
+                },
+                "bends": 4,
+                "stretch": 1.075
+              },
+              {
+                "relationship": {
+                  "id": "state-sale",
+                  "from": "state",
+                  "to": "mockCheckout",
+                  "label": "cash tender + cart totals",
+                  "collectionIndex": 14,
+                  "artifactIndex": 15
+                },
+                "bends": 3,
+                "stretch": 1.225
+              },
+              {
+                "relationship": {
+                  "id": "sales-memory",
+                  "from": "sales",
+                  "to": "memory",
+                  "label": "session state only",
+                  "collectionIndex": 16,
+                  "artifactIndex": 17
+                },
+                "bends": 3,
+                "stretch": 1.238
+              },
+              {
+                "relationship": {
+                  "id": "products-memory",
+                  "from": "products",
+                  "to": "memory",
+                  "label": "seeded in memory",
+                  "collectionIndex": 17,
+                  "artifactIndex": 18
+                },
+                "bends": 5,
+                "stretch": 1.144
+              }
+            ]
+          },
+          "leadingSpace": {
+            "measured": true,
+            "emptyTopPx": 30,
+            "emptyTopRatio": 0.041,
+            "occupiedTop": 30,
+            "viewBoxTop": 0,
+            "canvasHeight": 734,
+            "typicalNodeHeight": 72,
+            "reviewSuggested": false
+          },
+          "desktopReadability": {
+            "budgetBasis": "recognized-declared-wide",
+            "readerContract": "declared-wide-v1",
+            "availableDiagramWidth": 1305,
+            "actualBudgetPx": 1305,
+            "actualReaderWidth": 1335,
+            "desiredReaderWidth": 1335,
+            "viewportCap": 1376,
+            "limit": "source-size",
+            "requestedTargetPx": 7.5,
+            "requestedTargetMet": false,
+            "hardFloorPx": 6,
+            "hardFloorMet": true,
+            "minimumOwner": {
+              "kind": "node",
+              "id": "apiTarget"
+            },
+            "minimumSourceTextPx": 6.4,
+            "minimumProjectedTextPx": 6.4,
+            "semanticTextCount": 53
+          },
+          "issues": []
+        },
+        "provenance": "current",
+        "deliveryReceiptId": "7f63c0a7-6560-485c-8bd9-d27360454999"
+      }
+    },
+    "browser-check": {
+      "status": "fail",
+      "exitCode": 1,
+      "durationMs": 77,
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "C:\\Dev\\GroceryPOS\\PosFront\\.agents\\skills\\archify\\bin\\archify.mjs",
+        "browser-check",
+        "C:\\Dev\\GroceryPOS\\PosFront\\architecture\\grocerypos.html",
+        "--json",
+        "--require-provenance"
+      ],
+      "execution": "in-process",
+      "receipt": {
+        "schemaVersion": 1,
+        "ok": false,
+        "command": "browser-check",
+        "evidenceKind": "automated-browser",
+        "status": "fail",
+        "visualReview": "not-requested",
+        "provenance": "current",
+        "deliveryReceiptId": "7f63c0a7-6560-485c-8bd9-d27360454999",
+        "artifact": {
+          "path": "C:\\Dev\\GroceryPOS\\PosFront\\architecture\\grocerypos.html",
+          "sha256": "07fb7b0f0b01c8b116f88cb8d314e6679a4dabe71d0722219613bd915aa388a5",
+          "bytes": 874377
+        },
+        "state": {
+          "detail": "read",
+          "motion": "still"
+        },
+        "chrome": {
+          "status": "available",
+          "executable": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe"
+        },
+        "diagnostics": [
+          {
+            "code": "viewer/browser-check-runtime",
+            "severity": "error",
+            "message": "browser-check could not complete its Chrome inspection.",
+            "subject": {
+              "artifact": "C:\\Dev\\GroceryPOS\\PosFront\\architecture\\grocerypos.html"
+            },
+            "evidence": {
+              "reason": "Temporary directory ancestor identity is unavailable: C:\\Users\\Nour E.Benakezouh\\AppData\\Local\\Temp"
+            },
+            "supportedFixes": [
+              "resolve the reported Chrome inspection error, then rerun browser-check"
+            ]
+          }
+        ],
+        "containment": {
+          "status": "fail",
+          "policy": "fit-or-reader-declared-readable-vertical-scroll",
+          "viewports": []
+        },
+        "themeStates": {
+          "status": "fail",
+          "viewports": []
+        },
+        "readability": {
+          "status": "fail",
+          "minimumProjectedNodeTextPx": 6,
+          "viewports": []
+        },
+        "viewerChrome": {
+          "status": "fail",
+          "viewports": []
+        },
+        "captures": {
+          "status": "not-requested",
+          "screenshots": [],
+          "contactSheet": null
+        },
+        "sidecars": {
+          "receipt": "grocerypos.browser-check.json",
+          "files": []
+        },
+        "error": "Temporary directory ancestor identity is unavailable: C:\\Users\\Nour E.Benakezouh\\AppData\\Local\\Temp"
+      }
+    }
+  },
+  "browserCheck": {
+    "requested": true,
+    "ran": false
+  },
+  "diagnostics": [
+    {
+      "code": "viewer/browser-check-runtime",
+      "severity": "error",
+      "message": "browser-check could not complete its Chrome inspection.",
+      "subject": {
+        "artifact": "C:\\Dev\\GroceryPOS\\PosFront\\architecture\\grocerypos.html"
+      },
+      "evidence": {
+        "reason": "Temporary directory ancestor identity is unavailable: C:\\Users\\Nour E.Benakezouh\\AppData\\Local\\Temp"
+      },
+      "supportedFixes": [
+        "resolve the reported Chrome inspection error, then rerun browser-check"
+      ]
+    }
+  ],
+  "evidence": {
+    "receipt": "C:\\Dev\\GroceryPOS\\PosFront\\architecture\\grocerypos.finalize.json",
+    "summaryReceipt": "C:\\Dev\\GroceryPOS\\PosFront\\architecture\\grocerypos.finalize-summary.json",
+    "browserCheckReceipt": "C:\\Dev\\GroceryPOS\\PosFront\\architecture\\grocerypos.browser-check.json"
+  },
+  "visualReview": "not-requested",
+  "failedStage": "browser-check",
+  "finishedAt": "2026-10-27T03:51:19.199Z",
+  "durationMs": 1984,
+  "update": {
+    "status": "unavailable",
+    "installedVersion": null,
+    "availableVersion": null,
+    "releaseNotes": null,
+    "checkedAt": null,
+    "source": null,
+    "noticeRequired": false,
+    "noticeText": null,
+    "reason": "cache-unavailable"
+  }
+}

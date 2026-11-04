@@ -1,0 +1,68 @@
+{
+  "schemaVersion": 1,
+  "ok": false,
+  "command": "browser-check",
+  "evidenceKind": "automated-browser",
+  "status": "fail",
+  "visualReview": "not-requested",
+  "provenance": "current",
+  "deliveryReceiptId": "bdc92fd0-6da7-4b9b-b606-a5627757483b",
+  "artifact": {
+    "path": "C:\\Dev\\GroceryPOS\\PosFront\\architecture\\grocerypos.html",
+    "sha256": "07fb7b0f0b01c8b116f88cb8d314e6679a4dabe71d0722219613bd915aa388a5",
+    "bytes": 874377
+  },
+  "state": {
+    "detail": "read",
+    "motion": "still"
+  },
+  "chrome": {
+    "status": "available",
+    "executable": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe"
+  },
+  "diagnostics": [
+    {
+      "code": "viewer/browser-check-runtime",
+      "severity": "error",
+      "message": "browser-check could not complete its Chrome inspection.",
+      "subject": {
+        "artifact": "C:\\Dev\\GroceryPOS\\PosFront\\architecture\\grocerypos.html"
+      },
+      "evidence": {
+        "reason": "Chrome DevTools read pipe failed: stream ended\nChrome process: still running.\nChrome stderr:\n[12732:16568:1026/235202.625:ERROR:components\\os_crypt\\async\\browser\\os_crypt_win.cc:63] Failed to encrypt: The system cannot find the file specified. (0x2)\r\n[12732:2980:1026/235202.717:ERROR:chrome\\installer\\util\\google_update_settings_win.cc:270] Failed opening key Software\\Google\\Update\\ClientStateMedium\\{8A69D345-D564-463c-AFF1-A69D9E530F96} to set usagestats; result: 5\r\n[12732:20392:1026/235202.798:ERROR:components\\password_manager\\core\\browser\\password_store\\login_database_async_helper.cc:100] Encryption is not available.\r\n[12732:19992:1026/235202.798:ERROR:components\\password_manager\\core\\browser\\password_store\\login_database_async_helper.cc:100] Encryption is not available.\r\n[12732:16568:1026/235202.915:ERROR:content\\browser\\gpu\\gpu_process_host.cc:1044] GPU process exited unexpectedly: exit_code=-1073741790\r\n[12732:5820:1026/235202.916:ERROR:components\\viz\\host\\persistent_cache_sandboxed_file_factory.cc:153] Failed to open persistent cache files in directory \"C:\\Dev\\GroceryPOS\\PosFront\\architecture\\.archify-tmp\\browser-retry\\archify-visual-check-profile-hu152C\\GPUPersistentCache\\DawnGraphiteCache\\LSLKY6OQOC3C6NSMBEC62Q7Y6BL6S72V\", error: 0: The process cannot access the file because it is being used by another process. (0x20)\r\n[12732:16568:1026/235202.958:ERROR:content\\browser\\gpu\\gpu_process_host.cc:1044] GPU process exited unexpectedly: exit_code=-1073741790\r\n[12732:16568:1026/235202.978:ERROR:content\\browser\\gpu\\gpu_process_host.cc:1044] GPU process exited unexpectedly: exit_code=-1073741790\r\n[12732:5820:1026/235202.979:ERROR:components\\viz\\host\\persistent_cache_sandboxed_file_factory.cc:153] Failed to open persistent cache files in directory \"C:\\Dev\\GroceryPOS\\PosFront\\architecture\\.archify-tmp\\browser-retry\\archify-visual-check-profile-hu152C\\GPUPersistentCache\\DawnGraphiteCache\\LSLKY6OQOC3C6NSMBEC62Q7Y6BL6S72V\", error: 0: The process cannot access the file because it is being used by another process. (0x20)\r\n[12732:16568:1026/235203.004:ERROR:content\\browser\\gpu\\gpu_process_host.cc:1044] GPU process exited unexpectedly: exit_code=-1073741790\r\n[12732:6908:1026/235203.013:ERROR:services\\device\\public\\cpp\\geolocation\\system_geolocation_source_win.cc:124] Failed to create IAppCapability: Access is denied. (0x80070005)\r\n[12732:16568:1026/235203.018:ERROR:content\\browser\\gpu\\gpu_process_host.cc:1044] GPU process exited unexpectedly: exit_code=-1073741790\r\n[12732:5820:1026/235203.018:ERROR:components\\viz\\host\\persistent_cache_sandboxed_file_factory.cc:153] Failed to open persistent cache files in directory \"C:\\Dev\\GroceryPOS\\PosFront\\architecture\\.archify-tmp\\browser-retry\\archify-visual-check-profile-hu152C\\GPUPersistentCache\\DawnGraphiteCache\\LSLKY6OQOC3C6NSMBEC62Q7Y6BL6S72V\", error: 0: The process cannot access the file because it is being used by another process. (0x20)\r\n[12732:16568:1026/235203.026:ERROR:content\\browser\\gpu\\gpu_process_host.cc:1044] GPU process exited unexpectedly: exit_code=-1073741790\r\n[12732:16568:1026/235203.026:FATAL:content\\browser\\gpu\\gpu_data_manager_impl_private.cc:389] GPU process isn't usable. Goodbye.\nChrome transport: Node v24.22.0, libuv 1.52.1, win32; pid=12732, exitCode=null, signalCode=null.\nChrome read pipe: readable=false, ended=true, destroyed=false, receivedBytes=1328, messages=3, bufferedBytes=0.\nChrome write pipe: writable=false, ended=true, destroyed=false, completedWrites=3, writtenBytes=255, bufferedBytes=0."
+      },
+      "supportedFixes": [
+        "resolve the reported Chrome inspection error, then rerun browser-check"
+      ]
+    }
+  ],
+  "containment": {
+    "status": "fail",
+    "policy": "fit-or-reader-declared-readable-vertical-scroll",
+    "viewports": []
+  },
+  "themeStates": {
+    "status": "fail",
+    "viewports": []
+  },
+  "readability": {
+    "status": "fail",
+    "minimumProjectedNodeTextPx": 6,
+    "viewports": []
+  },
+  "viewerChrome": {
+    "status": "fail",
+    "viewports": []
+  },
+  "captures": {
+    "status": "not-requested",
+    "screenshots": [],
+    "contactSheet": null
+  },
+  "sidecars": {
+    "directory": "C:\\Dev\\GroceryPOS\\PosFront\\architecture\\review-3",
+    "receipt": "grocerypos.browser-check.json",
+    "files": []
+  },
+  "error": "Chrome DevTools read pipe failed: stream ended\nChrome process: still running.\nChrome stderr:\n[12732:16568:1026/235202.625:ERROR:components\\os_crypt\\async\\browser\\os_crypt_win.cc:63] Failed to encrypt: The system cannot find the file specified. (0x2)\r\n[12732:2980:1026/235202.717:ERROR:chrome\\installer\\util\\google_update_settings_win.cc:270] Failed opening key Software\\Google\\Update\\ClientStateMedium\\{8A69D345-D564-463c-AFF1-A69D9E530F96} to set usagestats; result: 5\r\n[12732:20392:1026/235202.798:ERROR:components\\password_manager\\core\\browser\\password_store\\login_database_async_helper.cc:100] Encryption is not available.\r\n[12732:19992:1026/235202.798:ERROR:components\\password_manager\\core\\browser\\password_store\\login_database_async_helper.cc:100] Encryption is not available.\r\n[12732:16568:1026/235202.915:ERROR:content\\browser\\gpu\\gpu_process_host.cc:1044] GPU process exited unexpectedly: exit_code=-1073741790\r\n[12732:5820:1026/235202.916:ERROR:components\\viz\\host\\persistent_cache_sandboxed_file_factory.cc:153] Failed to open persistent cache files in directory \"C:\\Dev\\GroceryPOS\\PosFront\\architecture\\.archify-tmp\\browser-retry\\archify-visual-check-profile-hu152C\\GPUPersistentCache\\DawnGraphiteCache\\LSLKY6OQOC3C6NSMBEC62Q7Y6BL6S72V\", error: 0: The process cannot access the file because it is being used by another process. (0x20)\r\n[12732:16568:1026/235202.958:ERROR:content\\browser\\gpu\\gpu_process_host.cc:1044] GPU process exited unexpectedly: exit_code=-1073741790\r\n[12732:16568:1026/235202.978:ERROR:content\\browser\\gpu\\gpu_process_host.cc:1044] GPU process exited unexpectedly: exit_code=-1073741790\r\n[12732:5820:1026/235202.979:ERROR:components\\viz\\host\\persistent_cache_sandboxed_file_factory.cc:153] Failed to open persistent cache files in directory \"C:\\Dev\\GroceryPOS\\PosFront\\architecture\\.archify-tmp\\browser-retry\\archify-visual-check-profile-hu152C\\GPUPersistentCache\\DawnGraphiteCache\\LSLKY6OQOC3C6NSMBEC62Q7Y6BL6S72V\", error: 0: The process cannot access the file because it is being used by another process. (0x20)\r\n[12732:16568:1026/235203.004:ERROR:content\\browser\\gpu\\gpu_process_host.cc:1044] GPU process exited unexpectedly: exit_code=-1073741790\r\n[12732:6908:1026/235203.013:ERROR:services\\device\\public\\cpp\\geolocation\\system_geolocation_source_win.cc:124] Failed to create IAppCapability: Access is denied. (0x80070005)\r\n[12732:16568:1026/235203.018:ERROR:content\\browser\\gpu\\gpu_process_host.cc:1044] GPU process exited unexpectedly: exit_code=-1073741790\r\n[12732:5820:1026/235203.018:ERROR:components\\viz\\host\\persistent_cache_sandboxed_file_factory.cc:153] Failed to open persistent cache files in directory \"C:\\Dev\\GroceryPOS\\PosFront\\architecture\\.archify-tmp\\browser-retry\\archify-visual-check-profile-hu152C\\GPUPersistentCache\\DawnGraphiteCache\\LSLKY6OQOC3C6NSMBEC62Q7Y6BL6S72V\", error: 0: The process cannot access the file because it is being used by another process. (0x20)\r\n[12732:16568:1026/235203.026:ERROR:content\\browser\\gpu\\gpu_process_host.cc:1044] GPU process exited unexpectedly: exit_code=-1073741790\r\n[12732:16568:1026/235203.026:FATAL:content\\browser\\gpu\\gpu_data_manager_impl_private.cc:389] GPU process isn't usable. Goodbye.\nChrome transport: Node v24.22.0, libuv 1.52.1, win32; pid=12732, exitCode=null, signalCode=null.\nChrome read pipe: readable=false, ended=true, destroyed=false, receivedBytes=1328, messages=3, bufferedBytes=0.\nChrome write pipe: writable=false, ended=true, destroyed=false, completedWrites=3, writtenBytes=255, bufferedBytes=0."
+}

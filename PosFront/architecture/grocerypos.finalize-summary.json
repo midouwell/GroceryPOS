@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "ok": false,
+  "command": "finalize",
+  "status": "fail",
+  "type": "architecture",
+  "quality": "showcase",
+  "specification": {
+    "path": "C:\\Dev\\GroceryPOS\\PosFront\\architecture\\grocerypos.architecture.json",
+    "sha256": "165ee91f506f31992a9c1c752290628a9986d8fb262ad6ce46d268f65456e7bf",
+    "bytes": 24703
+  },
+  "artifact": {
+    "path": "C:\\Dev\\GroceryPOS\\PosFront\\architecture\\grocerypos.html",
+    "sha256": "07fb7b0f0b01c8b116f88cb8d314e6679a4dabe71d0722219613bd915aa388a5",
+    "bytes": 874377
+  },
+  "gates": {
+    "validate": "pass",
+    "deliver": "pass",
+    "check": "pass",
+    "browser-check": "fail"
+  },
+  "failedStage": "browser-check",
+  "diagnostics": [
+    {
+      "code": "viewer/browser-check-runtime",
+      "severity": "error",
+      "message": "browser-check could not complete its Chrome inspection.",
+      "subject": {
+        "artifact": "C:\\Dev\\GroceryPOS\\PosFront\\architecture\\grocerypos.html"
+      },
+      "evidence": {
+        "reason": "Temporary directory ancestor identity is unavailable: C:\\Users\\Nour E.Benakezouh\\AppData\\Local\\Temp"
+      },
+      "supportedFixes": [
+        "resolve the reported Chrome inspection error, then rerun browser-check"
+      ]
+    }
+  ],
+  "diagnosticSummary": {
+    "total": 1,
+    "shown": 1,
+    "truncated": false
+  },
+  "evidence": {
+    "receipt": "C:\\Dev\\GroceryPOS\\PosFront\\architecture\\grocerypos.finalize.json",
+    "summaryReceipt": "C:\\Dev\\GroceryPOS\\PosFront\\architecture\\grocerypos.finalize-summary.json",
+    "browserCheckReceipt": "C:\\Dev\\GroceryPOS\\PosFront\\architecture\\grocerypos.browser-check.json"
+  },
+  "visualReview": "not-requested",
+  "durationMs": 1984,
+  "browserCheck": {
+    "requested": true,
+    "ran": false
+  }
+}

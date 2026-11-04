@@ -1,0 +1,293 @@
+<div class="pos-shell">
+  <header class="pos-topbar">
+    <a class="pos-mark" routerLink="/dashboard" aria-label="Grove Market dashboard">g</a>
+    <div class="register-number">901</div>
+    <div class="top-search">
+      <label for="product-search">⌕</label
+      ><input
+        id="product-search"
+        placeholder="Search products or scan barcode..."
+        [ngModel]="barcode()"
+        (ngModelChange)="barcode.set($event)"
+        appBarcodeScan
+        (appBarcodeScan)="scan($event)"
+      /><button (click)="scan()" aria-label="Scan barcode">▥</button>
+    </div>
+    <span class="top-date">{{ today | date: 'EEE, MMM d · h:mm a' }}</span>
+    <button class="top-user" aria-label="Cashier Jordan Miller"><span>JM</span></button>
+    <a class="top-menu" routerLink="/dashboard" aria-label="Open dashboard">☰</a>
+  </header>
+  <main class="pos-content">
+    <aside class="order-column">
+      <section class="order-card">
+        <div class="order-heading">
+          <div>
+            <span class="small-label">CURRENT ORDER</span>
+            <h1>Order <b>#901</b></h1>
+          </div>
+          <button class="clear-button" [disabled]="(empty$ | async) ?? true" (click)="clear()">
+            Clear
+          </button>
+        </div>
+        <div class="cashier-row">
+          <span class="cashier-avatar">JM</span><strong>Jordan Miller</strong
+          ><span class="register-state"><i></i> Register open</span>
+        </div>
+        <div class="order-items">
+          @if (lines$ | async; as lines) {
+            @if (lines.length) {
+              @for (line of lines; track line.productId) {
+                <article
+                  class="order-item"
+                  [class.selected]="selected() === line.productId"
+                  (click)="selected.set(line.productId)"
+                >
+                  <div class="order-item-copy">
+                    <strong>{{ line.name }}</strong
+                    ><small
+                      >{{ line.unitPriceCents / 100 | currency: 'CAD' }} / {{ line.unit }}</small
+                    >
+                  </div>
+                  <strong class="order-item-total">{{
+                    (line.unitPriceCents * line.quantity) / 100 | currency: 'CAD'
+                  }}</strong>
+                  <div class="order-item-controls">
+                    <button
+                      (click)="quantity(line.productId, -1); $event.stopPropagation()"
+                      [attr.aria-label]="'Decrease ' + line.name"
+                    >
+                      −</button
+                    ><span>{{ line.quantity }}</span
+                    ><button
+                      (click)="quantity(line.productId, 1); $event.stopPropagation()"
+                      [attr.aria-label]="'Increase ' + line.name"
+                    >
+                      +</button
+                    ><button
+                      class="delete-item"
+                      (click)="remove(line.productId); $event.stopPropagation()"
+                      [attr.aria-label]="'Remove ' + line.name"
+                    >
+                      ×
+                    </button>
+                  </div>
+                </article>
+              }
+            } @else {
+              <div class="order-empty">
+                <span>▣</span><strong>Start a new order</strong>
+                <p>Search for a product or scan its barcode.</p>
+              </div>
+            }
+          }
+        </div>
+        <div class="order-totals">
+          <div>
+            <span>Taxes</span><strong>{{ ((tax$ | async) ?? 0) / 100 | currency: 'CAD' }}</strong>
+          </div>
+          <div class="order-grand-total">
+            <span>Total</span><strong>{{ ((total$ | async) ?? 0) / 100 | currency: 'CAD' }}</strong>
+          </div>
+        </div>
+      </section>
+      <section class="keypad-card">
+        <div class="pos-action-row">
+          <button (click)="keypadMode.set('quantity')">Jordan Hart</button
+          ><button (click)="notice.set('Internal notes are not available in this demo.')">
+            Internal Note</button
+          ><button (click)="notice.set('Order actions are not available in this demo.')">
+            Actions
+          </button>
+        </div>
+        <div class="keypad-display" [class.mode-quantity]="keypadMode() === 'quantity'">
+          <span>{{ keypadMode() === 'quantity' ? 'Set quantity' : 'Barcode / SKU' }}</span
+          ><strong>{{ barcode() || '—' }}</strong
+          ><button (click)="enterKeypad()" aria-label="Apply keypad entry">↵</button>
+        </div>
+        <div class="number-pad">
+          <button (click)="key('1')">1</button><button (click)="key('2')">2</button
+          ><button (click)="key('3')">3</button
+          ><button class="pad-side" (click)="key('Qty')">Qty</button>
+          <button (click)="key('4')">4</button><button (click)="key('5')">5</button
+          ><button (click)="key('6')">6</button
+          ><button
+            class="pad-side"
+            (click)="notice.set('Discount entry is not enabled in this demo.')"
+          >
+            %
+          </button>
+          <button (click)="key('7')">7</button><button (click)="key('8')">8</button
+          ><button (click)="key('9')">9</button
+          ><button
+            class="pad-side"
+            (click)="notice.set('Manual price changes are not enabled in this demo.')"
+          >
+            Price
+          </button>
+          <button class="pad-yellow" (click)="key('-')">+/−</button
+          ><button (click)="key('0')">0</button
+          ><button class="pad-peach" (click)="key('.')">.</button
+          ><button class="pad-delete" (click)="key('Backspace')">⌫</button>
+        </div>
+      </section>
+      <button class="payment-button" [disabled]="(empty$ | async) ?? true" (click)="openCash()">
+        Payment <span>{{ ((total$ | async) ?? 0) / 100 | currency: 'CAD' }}</span>
+      </button>
+      <button class="card-quick" [disabled]="(empty$ | async) ?? true" (click)="openCard()">
+        Card payment terminal placeholder
+      </button>
+      <p class="demo-caption">Demo register · payments are simulated</p>
+    </aside>
+    <section class="catalog-column">
+      <div class="category-grid">
+        @for (c of categories; track c) {
+          <button [class.active]="category() === c" (click)="category.set(c)">
+            {{ c === 'All categories' ? 'All Products' : c }}
+          </button>
+        }
+      </div>
+      <div class="catalog-toolbar">
+        <div><span class="small-label">PRODUCT CATALOG</span><strong>Choose an item</strong></div>
+        <span>{{ (count$ | async) ?? 0 }} items in order</span>
+      </div>
+      @if (products$ | async; as products) {
+        <div class="pos-product-grid">
+          @for (p of products; track p.id) {
+            @if (bySearch(p)) {
+              <button class="pos-product" (click)="add(p)" [disabled]="p.stockQuantity === 0">
+                <div class="pos-product-image" [class]="p.category.toLowerCase()">
+                  <span>{{ productEmoji(p) }}</span
+                  ><i>i</i>
+                </div>
+                <div class="pos-product-footer">
+                  <strong>{{ p.name }}</strong
+                  ><small>{{ p.price | currency: 'CAD' }} / {{ p.unit }}</small>
+                </div>
+                @if (p.stockQuantity > 0 && p.stockQuantity <= p.reorderLevel) {
+                  <em>Low stock · {{ p.stockQuantity }}</em>
+                }
+              </button>
+            }
+          } @empty {
+            <div class="catalog-empty">No products match this search.</div>
+          }
+        </div>
+      }
+    </section>
+  </main>
+  @if (confirmClear()) {
+    <div class="dialog-backdrop">
+      <section
+        class="payment-dialog confirm-dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="clear-order-title"
+      >
+        <button class="dialog-close" (click)="confirmClear.set(false)" aria-label="Close">×</button>
+        <div class="payment-success">!</div>
+        <h2 id="clear-order-title">Clear this order?</h2>
+        <p>All items will be removed from the current order.</p>
+        <div class="dialog-actions">
+          <button (click)="confirmClear.set(false)">Keep items</button
+          ><button class="dialog-primary" (click)="confirmClearOrder()">Clear order</button>
+        </div>
+      </section>
+    </div>
+  }
+  @if (notice()) {
+    <div class="pos-toast" role="status">
+      {{ notice() }} <button (click)="notice.set('')" aria-label="Dismiss">×</button>
+    </div>
+  }
+  @if (error()) {
+    <div class="pos-error" role="alert">
+      {{ error() }} <button (click)="error.set('')" aria-label="Dismiss">×</button>
+    </div>
+  }
+  @if (showCash()) {
+    <div class="dialog-backdrop">
+      <section
+        class="payment-dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="payment-title"
+      >
+        <button class="dialog-close" (click)="closeCash()" aria-label="Close">×</button>
+        @if (checkout$ | async; as state) {
+          @if (state.status === 'succeeded' && state.lastSale; as sale) {
+            <div class="payment-success">✓</div>
+            <h2 id="payment-title">Payment complete</h2>
+            <p>This cash sale was recorded in demo mode.</p>
+            <div class="dialog-summary">
+              <div>
+                <span>Sale number</span><strong>{{ sale.saleNumber }}</strong>
+              </div>
+              <div>
+                <span>Total</span><strong>{{ sale.totalCents / 100 | currency: 'CAD' }}</strong>
+              </div>
+              <div>
+                <span>Change</span><strong>{{ change(sale.totalCents) | currency: 'CAD' }}</strong>
+              </div>
+            </div>
+            <button class="dialog-primary" (click)="done()">Done</button>
+          } @else {
+            <div class="payment-success">$</div>
+            <h2 id="payment-title">Cash payment</h2>
+            <p>Enter the cash received from the customer.</p>
+            <div class="due-total">
+              <span>Total due</span
+              ><strong>{{ ((total$ | async) ?? 0) / 100 | currency: 'CAD' }}</strong>
+            </div>
+            <label for="cash-amount">Cash received</label
+            ><input
+              id="cash-amount"
+              type="number"
+              min="0"
+              step="0.01"
+              [ngModel]="tendered()"
+                (ngModelChange)="setTendered($event)"
+              placeholder="0.00"
+              [disabled]="state.status === 'processing'"
+            />
+            <div class="dialog-summary">
+              <div>
+                <span>Change due</span
+                ><strong>{{ change((total$ | async) ?? 0) | currency: 'CAD' }}</strong>
+              </div>
+            </div>
+            @if (error()) {
+              <p class="dialog-error">{{ error() }}</p>
+            }
+            @if (state.error) {
+              <p class="dialog-error">{{ state.error }}</p>
+            }
+            <p class="simulation-note">No real payment is processed.</p>
+            <div class="dialog-actions">
+              <button (click)="closeCash()" [disabled]="state.status === 'processing'">
+                Cancel</button
+              ><button
+                class="dialog-primary"
+                (click)="confirmCash()"
+                [disabled]="state.status === 'processing'"
+              >
+                {{ state.status === 'processing' ? 'Processing...' : 'Confirm cash' }}
+              </button>
+            </div>
+          }
+        }
+      </section>
+    </div>
+  }
+  @if (showCard()) {
+    <div class="dialog-backdrop">
+      <section class="payment-dialog" role="dialog" aria-modal="true" aria-labelledby="card-title">
+        <button class="dialog-close" (click)="showCard.set(false)" aria-label="Close">×</button>
+        <div class="payment-success">▣</div>
+        <h2 id="card-title">Card terminal</h2>
+        <p>{{ cardMessage() }}</p>
+        <div class="simulation-note">No card details are collected or stored.</div>
+        <button class="dialog-primary" (click)="showCard.set(false)">Got it</button>
+      </section>
+    </div>
+  }
+</div>

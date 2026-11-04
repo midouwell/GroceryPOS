@@ -1,0 +1,489 @@
+{
+    "schema_version":  1,
+    "diagram_type":  "architecture",
+    "meta":  {
+                 "title":  "GroceryPOS Architecture",
+                 "locale":  "en",
+                 "quality_profile":  "showcase",
+                 "output":  "architecture/grocerypos.html",
+                 "views":  [
+                               {
+                                   "id":  "system",
+                                   "label":  "System",
+                                   "focus":  [
+                                                 "cashier",
+                                                 "app",
+                                                 "routes",
+                                                 "checkout",
+                                                 "workspace",
+                                                 "state",
+                                                 "mockCheckout",
+                                                 "sales",
+                                                 "memory"
+                                             ]
+                               },
+                               {
+                                   "id":  "frontend",
+                                   "label":  "Frontend",
+                                   "focus":  [
+                                                 "app",
+                                                 "routes",
+                                                 "checkout",
+                                                 "workspace",
+                                                 "state",
+                                                 "products",
+                                                 "inventory"
+                                             ]
+                               },
+                               {
+                                   "id":  "checkoutFlow",
+                                   "label":  "Checkout",
+                                   "focus":  [
+                                                 "cashier",
+                                                 "checkout",
+                                                 "products",
+                                                 "state",
+                                                 "mockCheckout",
+                                                 "sales",
+                                                 "memory",
+                                                 "card"
+                                             ]
+                               },
+                               {
+                                   "id":  "access",
+                                   "label":  "Access \u0026 API",
+                                   "focus":  [
+                                                 "routes",
+                                                 "guards",
+                                                 "auth",
+                                                 "api",
+                                                 "apiTarget"
+                                             ]
+                               },
+                               {
+                                   "id":  "persistence",
+                                   "label":  "State \u0026 persistence",
+                                   "focus":  [
+                                                 "products",
+                                                 "inventory",
+                                                 "state",
+                                                 "mockCheckout",
+                                                 "sales",
+                                                 "memory",
+                                                 "offline"
+                                             ]
+                               }
+                           ]
+             },
+    "components":  [
+                       {
+                           "id":  "cashier",
+                           "type":  "external",
+                           "label":  "Cashier",
+                           "sublabel":  "Browser user",
+                           "pos":  [
+                                       40,
+                                       180
+                                   ],
+                           "size":  [
+                                        120,
+                                        58
+                                    ]
+                       },
+                       {
+                           "id":  "app",
+                           "type":  "frontend",
+                           "label":  "Angular app",
+                           "sublabel":  "Standalone bootstrap",
+                           "pos":  [
+                                       220,
+                                       180
+                                   ],
+                           "size":  [
+                                        145,
+                                        64
+                                    ]
+                       },
+                       {
+                           "id":  "routes",
+                           "type":  "frontend",
+                           "label":  "Lazy routes",
+                           "sublabel":  "Lazy feature routes",
+                           "pos":  [
+                                       445,
+                                       180
+                                   ],
+                           "size":  [
+                                        200,
+                                        78
+                                    ]
+                       },
+                       {
+                           "id":  "guards",
+                           "type":  "security",
+                           "label":  "Route guards",
+                           "sublabel":  "Demo auth + role checks",
+                           "pos":  [
+                                       445,
+                                       330
+                                   ],
+                           "size":  [
+                                        175,
+                                        68
+                                    ]
+                       },
+                       {
+                           "id":  "auth",
+                           "type":  "security",
+                           "label":  "AuthStore",
+                           "sublabel":  "In-memory demo identity; no server login",
+                           "pos":  [
+                                       220,
+                                       330
+                                   ],
+                           "size":  [
+                                        190,
+                                        72
+                                    ]
+                       },
+                       {
+                           "id":  "checkout",
+                           "type":  "frontend",
+                           "label":  "Checkout page",
+                           "sublabel":  "Lookup · cart · cash · receipt",
+                           "pos":  [
+                                       700,
+                                       70
+                                   ],
+                           "size":  [
+                                        205,
+                                        76
+                                    ]
+                       },
+                       {
+                           "id":  "workspace",
+                           "type":  "frontend",
+                           "label":  "Shared workspace page",
+                           "sublabel":  "Shared operations workspace",
+                           "pos":  [
+                                       700,
+                                       230
+                                   ],
+                           "size":  [
+                                        220,
+                                        78
+                                    ]
+                       },
+                       {
+                           "id":  "products",
+                           "type":  "frontend",
+                           "label":  "Product state + mock port",
+                           "sublabel":  "Seeded products; edits stay in session memory",
+                           "pos":  [
+                                       1050,
+                                       80
+                                   ],
+                           "size":  [
+                                        215,
+                                        76
+                                    ]
+                       },
+                       {
+                           "id":  "inventory",
+                           "type":  "frontend",
+                           "label":  "Inventory state + mock port",
+                           "sublabel":  "Adjusts product stock in memory",
+                           "pos":  [
+                                       980,
+                                       230
+                                   ],
+                           "size":  [
+                                        215,
+                                        76
+                                    ]
+                       },
+                       {
+                           "id":  "state",
+                           "type":  "frontend",
+                           "label":  "Cart + checkout stores",
+                           "sublabel":  "Signal state; totals and cash checkout",
+                           "pos":  [
+                                       700,
+                                       410
+                                   ],
+                           "size":  [
+                                        205,
+                                        72
+                                    ]
+                       },
+                       {
+                           "id":  "mockCheckout",
+                           "type":  "frontend",
+                           "label":  "Mock cash sale service",
+                           "sublabel":  "Validates tender; creates completed sale",
+                           "pos":  [
+                                       980,
+                                       410
+                                   ],
+                           "size":  [
+                                        215,
+                                        72
+                                    ]
+                       },
+                       {
+                           "id":  "sales",
+                           "type":  "frontend",
+                           "label":  "SalesStore",
+                           "sublabel":  "Seed sales + session sale history",
+                           "pos":  [
+                                       980,
+                                       555
+                                   ],
+                           "size":  [
+                                        195,
+                                        68
+                                    ]
+                       },
+                       {
+                           "id":  "memory",
+                           "type":  "database",
+                           "label":  "Browser memory only",
+                           "sublabel":  "No database or browser storage found",
+                           "pos":  [
+                                       700,
+                                       555
+                                   ],
+                           "size":  [
+                                        210,
+                                        68
+                                    ]
+                       },
+                       {
+                           "id":  "card",
+                           "type":  "external",
+                           "label":  "Card terminal",
+                           "sublabel":  "Not configured; card authorization unavailable",
+                           "pos":  [
+                                       340,
+                                       30
+                                   ],
+                           "size":  [
+                                        215,
+                                        68
+                                    ]
+                       },
+                       {
+                           "id":  "api",
+                           "type":  "frontend",
+                           "label":  "HTTP client scaffold",
+                           "sublabel":  "ApiService + JWT/error interceptors; no callers found",
+                           "pos":  [
+                                       40,
+                                       470
+                                   ],
+                           "size":  [
+                                        250,
+                                        74
+                                    ]
+                       },
+                       {
+                           "id":  "apiTarget",
+                           "type":  "external",
+                           "label":  "Configured API URL",
+                           "sublabel":  "https://localhost:7001/api Ãƒâ€šÃ‚Â· backend not in this project",
+                           "pos":  [
+                                       350,
+                                       520
+                                   ],
+                           "size":  [
+                                        255,
+                                        74
+                                    ]
+                       },
+                       {
+                           "id":  "offline",
+                           "type":  "frontend",
+                           "label":  "Offline sync extension point",
+                           "sublabel":  "Explicitly unimplemented",
+                           "pos":  [
+                                       40,
+                                       600
+                                   ],
+                           "size":  [
+                                        235,
+                                        66
+                                    ]
+                       }
+                   ],
+    "connections":  [
+                        {
+                            "id":  "operator-app",
+                            "from":  "cashier",
+                            "to":  "app",
+                            "label":  "uses",
+                            "variant":  "emphasis"
+                        },
+                        {
+                            "id":  "app-routes",
+                            "from":  "app",
+                            "to":  "routes",
+                            "label":  "bootstraps router"
+                        },
+                        {
+                            "id":  "routes-checkout",
+                            "from":  "routes",
+                            "to":  "checkout",
+                            "label":  "lazy route"
+                        },
+                        {
+                            "id":  "routes-workspace",
+                            "from":  "routes",
+                            "to":  "workspace",
+                            "label":  "lazy route"
+                        },
+                        {
+                            "id":  "routes-guards",
+                            "from":  "routes",
+                            "to":  "guards",
+                            "label":  "guarded products / inventory"
+                        },
+                        {
+                            "id":  "guards-auth",
+                            "from":  "guards",
+                            "to":  "auth",
+                            "label":  "reads demo identity",
+                            "variant":  "security"
+                        },
+                        {
+                            "id":  "checkout-products",
+                            "from":  "checkout",
+                            "to":  "products",
+                            "label":  "search / barcode lookup"
+                        },
+                        {
+                            "id":  "checkout-cart",
+                            "from":  "checkout",
+                            "to":  "state",
+                            "label":  "add lines Ãƒâ€šÃ‚Â· tender cash"
+                        },
+                        {
+                            "id":  "checkout-card",
+                            "from":  "checkout",
+                            "to":  "card",
+                            "label":  "reads unavailable status",
+                            "variant":  "dashed"
+                        },
+                        {
+                            "id":  "workspace-products",
+                            "from":  "workspace",
+                            "to":  "products",
+                            "label":  "list / edit"
+                        },
+                        {
+                            "id":  "workspace-inventory",
+                            "from":  "workspace",
+                            "to":  "inventory",
+                            "label":  "adjust stock"
+                        },
+                        {
+                            "id":  "workspace-state",
+                            "from":  "workspace",
+                            "to":  "sales",
+                            "label":  "sales history"
+                        },
+                        {
+                            "id":  "inventory-products",
+                            "from":  "inventory",
+                            "to":  "products",
+                            "label":  "updates stock quantity"
+                        },
+                        {
+                            "id":  "state-product-read",
+                            "from":  "state",
+                            "to":  "products",
+                            "label":  "uses product snapshot"
+                        },
+                        {
+                            "id":  "state-sale",
+                            "from":  "state",
+                            "to":  "mockCheckout",
+                            "label":  "cash tender + cart totals"
+                        },
+                        {
+                            "id":  "mock-sale",
+                            "from":  "mockCheckout",
+                            "to":  "sales",
+                            "label":  "creates sale"
+                        },
+                        {
+                            "id":  "sales-memory",
+                            "from":  "sales",
+                            "to":  "memory",
+                            "label":  "session state only"
+                        },
+                        {
+                            "id":  "products-memory",
+                            "from":  "products",
+                            "to":  "memory",
+                            "label":  "seeded in memory"
+                        },
+                        {
+                            "id":  "api-target",
+                            "from":  "api",
+                            "to":  "apiTarget",
+                            "label":  "configured destination; no feature calls found",
+                            "variant":  "dashed"
+                        }
+                    ],
+    "cards":  [
+                  {
+                      "dot":  "cyan",
+                      "title":  "Verified scope",
+                      "items":  [
+                                    "PosFront is Angular 22 with standalone bootstrap, lazy routes, RxJS and NgRx SignalStore.",
+                                    "Dashboard, products, inventory, sales, customers and reports use a shared workspace component; checkout has a dedicated page.",
+                                    "The diagram describes the inspected working tree. Source files are modified or untracked, so Git commit provenance is intentionally omitted."
+                                ]
+                  },
+                  {
+                      "dot":  "emerald",
+                      "title":  "Cash sale workflow",
+                      "items":  [
+                                    "Barcode / text lookup selects active seeded products; cart state snapshots item data and computes subtotal, tax and total.",
+                                    "The page validates cash tender; CheckoutStore calls MockCheckoutService, prepends the sale in SalesStore, clears the cart and exposes the receipt.",
+                                    "Payment is local demo behavior. Card gateway reports no terminal, and cash sale recording does not call a payment processor."
+                                ]
+                  },
+                  {
+                      "dot":  "amber",
+                      "title":  "Data and persistence",
+                      "items":  [
+                                    "Product, cart, inventory and sale data live in NgRx SignalStore state initialized from source fixtures; changes last only in the current app session.",
+                                    "No backend project, controller, database entity/repository, browser storage, durable queue or sync path was found in PosFront.",
+                                    "OfflineSyncService is an extension point with isImplemented=false. The configured API URL is not evidence of a running server; ApiService has no feature callers."
+                                ]
+                  },
+                  {
+                      "dot":  "rose",
+                      "title":  "Architecture concerns",
+                      "items":  [
+                                    "AuthStore starts with a hard-coded authenticated cashier and null token; guards are client-side demo gates, not server authorization.",
+                                    "Only products and inventory routes are guarded; checkout and other workspace routes have no route guard in their route definitions.",
+                                    "WorkspacePage owns dashboard, catalog, inventory, sales, customer and report behavior in one large component, overlapping checkout operations.",
+                                    "No durable transaction boundary or authoritative inventory update exists; completed mock sales do not decrement stock."
+                                ]
+                  },
+                  {
+                      "dot":  "slate",
+                      "title":  "Working-tree evidence (not commit-bound)",
+                      "items":  [
+                                    "Runtime and routes: src/main.ts:1-6; src/app/app.config.ts:11-19; src/app/app.routes.ts:3-12.",
+                                    "Access behavior: src/app/core/state/auth.store.ts:1-11; src/app/core/guards/auth.guard.ts:4-7; src/app/core/guards/role.guard.ts:5-12.",
+                                    "Checkout and sale flow: src/app/features/checkout/checkout.page.ts:15-49; src/app/features/checkout/state/cart.store.ts:1-58; src/app/features/checkout/state/checkout.store.ts:20-59; src/app/core/services/mock-checkout.service.ts:1-30; src/app/features/sales/state/sales.store.ts:1-14.",
+                                    "Product and inventory behavior: src/app/features/products/state/products.store.ts:1-33; src/app/features/products/services/product-data.service.ts:1-16; src/app/features/inventory/state/inventory.store.ts:1-31; src/app/features/inventory/services/inventory-data.service.ts:1-15.",
+                                    "Integrations and non-persistent operation: src/app/core/config/api.config.ts:1-8; src/app/core/services/api.service.ts:7-30; src/app/features/checkout/services/payment.gateway.ts:11-21; src/app/core/services/offline-sync.service.ts:1-7; src/app/core/models/pos.models.ts:10-207.",
+                                    "PosFront has no configured Git remote; relevant application files are modified or untracked. These paths and line ranges describe the inspected working tree and are not claims about the pinned HEAD."
+                                ]
+                  }
+              ]
+}

@@ -1,0 +1,8 @@
+<router-outlet />
+<div class="fullscreen-control">
+  @if(fullscreenError()){<span role="status">{{fullscreenError()}}</span>}
+  <button type="button" (click)="toggleFullscreen()" [attr.aria-pressed]="isFullscreen()" [attr.aria-label]="isFullscreen()?'Exit full screen. Press Escape to return to normal view':'Enter full screen'">
+    <span aria-hidden="true">{{isFullscreen()?'⛶':'⛶'}}</span>
+    {{isFullscreen()?'Full screen · Esc to exit':'Enter full screen'}}
+  </button>
+</div>
