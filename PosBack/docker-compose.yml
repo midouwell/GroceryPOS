@@ -53,7 +53,7 @@ services:
     environment:
       ASPNETCORE_ENVIRONMENT: Development
       JsonPersistence__DataPath: "/app/data"
-      ConnectionStrings__IdentityDatabase: "Server=sqlserver,1433;Database=GroceryPOS_Identity;User Id=sa;Password=${SQLSERVER_SA_PASSWORD:-LocalDevOnly!Change123};TrustServerCertificate=True;Encrypt=False"
+      ConnectionStrings__IdentityDatabase: "Server=(localdb)\\MSSQLLocalDB;Database=GroceryPOS_Identity;User Id=sa;Password=${SQLSERVER_SA_PASSWORD:-LocalDevOnly!Change123};TrustServerCertificate=True;Encrypt=False"
 
   products:
     build: { context: ., dockerfile: src/Services/Products/Products.Api/Dockerfile }
@@ -62,7 +62,7 @@ services:
     environment:
       ASPNETCORE_ENVIRONMENT: Development
       JsonPersistence__DataPath: "/app/data"
-      ConnectionStrings__ProductsDatabase: "Server=sqlserver,1433;Database=GroceryPOS_Products;User Id=sa;Password=${SQLSERVER_SA_PASSWORD:-LocalDevOnly!Change123};TrustServerCertificate=True;Encrypt=False"
+      ConnectionStrings__ProductsDatabase: "Server=(localdb)\\MSSQLLocalDB;Database=GroceryPOS_Products;User Id=sa;Password=${SQLSERVER_SA_PASSWORD:-LocalDevOnly!Change123};TrustServerCertificate=True;Encrypt=False"
 
   inventory:
     build: { context: ., dockerfile: src/Services/Inventory/Inventory.Api/Dockerfile }
@@ -71,7 +71,7 @@ services:
     environment:
       ASPNETCORE_ENVIRONMENT: Development
       JsonPersistence__DataPath: "/app/data"
-      ConnectionStrings__InventoryDatabase: "Server=sqlserver,1433;Database=GroceryPOS_Inventory;User Id=sa;Password=${SQLSERVER_SA_PASSWORD:-LocalDevOnly!Change123};TrustServerCertificate=True;Encrypt=False"
+      ConnectionStrings__InventoryDatabase: "Server=(localdb)\\MSSQLLocalDB;Database=GroceryPOS_Inventory;User Id=sa;Password=${SQLSERVER_SA_PASSWORD:-LocalDevOnly!Change123};TrustServerCertificate=True;Encrypt=False"
 
   sales:
     build: { context: ., dockerfile: src/Services/Sales/Sales.Api/Dockerfile }
@@ -83,7 +83,7 @@ services:
       Services__Products: http://products:8080/
       Services__Inventory: http://inventory:8080/
       Services__Payments: http://payments:8080/
-      ConnectionStrings__SalesDatabase: "Server=sqlserver,1433;Database=GroceryPOS_Sales;User Id=sa;Password=${SQLSERVER_SA_PASSWORD:-LocalDevOnly!Change123};TrustServerCertificate=True;Encrypt=False"
+      ConnectionStrings__SalesDatabase: "Server=(localdb)\\MSSQLLocalDB;Database=GroceryPOS_Sales;User Id=sa;Password=${SQLSERVER_SA_PASSWORD:-LocalDevOnly!Change123};TrustServerCertificate=True;Encrypt=False"
       RabbitMq__Host: rabbitmq
       RabbitMq__Username: ${RABBITMQ_USER:-grocerypos}
       RabbitMq__Password: ${RABBITMQ_PASSWORD:-change-me}
@@ -96,7 +96,7 @@ services:
     environment:
       ASPNETCORE_ENVIRONMENT: Development
       JsonPersistence__DataPath: "/app/data"
-      ConnectionStrings__PaymentsDatabase: "Server=sqlserver,1433;Database=GroceryPOS_Payments;User Id=sa;Password=${SQLSERVER_SA_PASSWORD:-LocalDevOnly!Change123};TrustServerCertificate=True;Encrypt=False"
+      ConnectionStrings__PaymentsDatabase: "Server=(localdb)\\MSSQLLocalDB;Database=GroceryPOS_Payments;User Id=sa;Password=${SQLSERVER_SA_PASSWORD:-LocalDevOnly!Change123};TrustServerCertificate=True;Encrypt=False"
 
   customers:
     build: { context: ., dockerfile: src/Services/Customers/Customers.Api/Dockerfile }
@@ -105,7 +105,7 @@ services:
     environment:
       ASPNETCORE_ENVIRONMENT: Development
       JsonPersistence__DataPath: "/app/data"
-      ConnectionStrings__CustomersDatabase: "Server=sqlserver,1433;Database=GroceryPOS_Customers;User Id=sa;Password=${SQLSERVER_SA_PASSWORD:-LocalDevOnly!Change123};TrustServerCertificate=True;Encrypt=False"
+      ConnectionStrings__CustomersDatabase: "Server=(localdb)\\MSSQLLocalDB;Database=GroceryPOS_Customers;User Id=sa;Password=${SQLSERVER_SA_PASSWORD:-LocalDevOnly!Change123};TrustServerCertificate=True;Encrypt=False"
 
   reports:
     build: { context: ., dockerfile: src/Services/Reports/Reports.Api/Dockerfile }
