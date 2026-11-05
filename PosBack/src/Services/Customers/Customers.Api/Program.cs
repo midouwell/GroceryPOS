@@ -5,6 +5,9 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using SharedKernel.Persistence;
 
+using Customers.Api.Infrastructure.Persistence;
+using Microsoft.EntityFrameworkCore;
+
 namespace Customers.Api;
 
 public class Program
@@ -22,6 +25,8 @@ public class Program
             return new JsonRepository<Customer>(options, serviceProvider.GetRequiredService<ILogger<JsonRepository<Customer>>>(), []);
         });
         builder.Services.AddScoped<CustomerService>();
+        builder.Services.AddDbContext<CustomersDbContext>(options =>
+            options.UseSqlServer(builder.Configuration.GetConnectionString("CustomersDatabase")));
 
         var jwtKey = builder.Configuration["Jwt:SigningKey"] ?? throw new InvalidOperationException("Jwt:SigningKey must be configured.");
         builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)

@@ -5,6 +5,9 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using SharedKernel.Persistence;
 
+using Inventory.Api.Infrastructure.Persistence;
+using Microsoft.EntityFrameworkCore;
+
 namespace Inventory.Api;
 
 public class Program
@@ -27,6 +30,8 @@ public class Program
             return new JsonRepository<StockMovement>(options, serviceProvider.GetRequiredService<ILogger<JsonRepository<StockMovement>>>(), []);
         });
         builder.Services.AddScoped<InventoryService>();
+        builder.Services.AddDbContext<InventoryDbContext>(options =>
+            options.UseSqlServer(builder.Configuration.GetConnectionString("InventoryDatabase")));
 
         var jwtKey = builder.Configuration["Jwt:SigningKey"] ?? throw new InvalidOperationException("Jwt:SigningKey must be configured.");
         builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)

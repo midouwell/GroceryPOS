@@ -5,6 +5,9 @@ using Products.Api.Application;
 using Products.Api.Domain;
 using SharedKernel.Persistence;
 
+using Microsoft.EntityFrameworkCore;
+using Products.Api.Infrastructure.Persistence;
+
 namespace Products.Api;
 
 public class Program
@@ -23,6 +26,8 @@ public class Program
             return new JsonRepository<Product>(options, serviceProvider.GetRequiredService<ILogger<JsonRepository<Product>>>(), seedProducts);
         });
         builder.Services.AddScoped<ProductService>();
+        builder.Services.AddDbContext<ProductsDbContext>(options =>
+            options.UseSqlServer(builder.Configuration.GetConnectionString("ProductsDatabase")));
 
         var jwtKey = builder.Configuration["Jwt:SigningKey"] ?? throw new InvalidOperationException("Jwt:SigningKey must be configured.");
         builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)

@@ -4,6 +4,9 @@ using Microsoft.IdentityModel.Tokens;
 using Sales.Api.Application;
 using Sales.Api.Domain;
 using SharedKernel.Persistence;
+using Messaging;
+using Microsoft.EntityFrameworkCore;
+using Sales.Api.Infrastructure.Persistence;
 
 namespace Sales.Api;
 
@@ -30,6 +33,9 @@ public sealed class Program
         builder.Services.AddHttpClient<PaymentClient>(client =>
             client.BaseAddress = new Uri(builder.Configuration["Services:Payments"] ?? "http://localhost:5105/"));
         builder.Services.AddScoped<CheckoutService>();
+        builder.Services.AddSingleton<IEventBus, RabbitMqEventBus>();
+        builder.Services.AddDbContext<SalesDbContext>(options =>
+            options.UseSqlServer(builder.Configuration.GetConnectionString("SalesDatabase")));
 
         var jwtKey = builder.Configuration["Jwt:SigningKey"] ?? throw new InvalidOperationException("Jwt:SigningKey must be configured.");
         builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>

@@ -53,7 +53,33 @@ Les tests vérifient l'initialisation d'un fichier absent et l'absence de perte 
 
 Les Dockerfiles doivent être présents avant `docker compose up --build`. Ils ne sont pas nécessaires pour lancer les projets localement avec .NET.
 
-## Ce qu'il faut comprendre avant l'étape 2
+## Step 4
+
+Rapports, RabbitMQ, Docker Compose, observabilité et intégration Angular sont documentés dans :
+
+- `docs/step4-docker-and-messaging.md`
+- `docs/angular-integration.md`
+- `docs/sql-server-migration.md`
+- `docs/step3-saga-and-checkout.md`
+
+Demarrer le backend complet :
+
+```powershell
+Copy-Item .env.example .env
+docker compose up --build
+```
+
+Gateway : `http://localhost:5100`
+RabbitMQ management : `http://localhost:15672`
+
+Lancer les tests :
+
+```powershell
+dotnet test PosBack.sln
+docker compose config
+```
+
+## Ce qu'il faut comprendre avant l'étape 4
 
 1. La gateway est le seul point d'entrée Angular; les ports internes ne sont pas publiés au navigateur.
 2. YARP utilise la section `ReverseProxy` de `appsettings.json`.

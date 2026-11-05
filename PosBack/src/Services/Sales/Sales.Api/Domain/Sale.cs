@@ -14,6 +14,7 @@ public sealed class Sale
     public string PaymentStatus { get; set; } = SalePaymentStatuses.Pending;
     public string Status { get; set; } = SaleStatuses.Pending;
     public string PaymentId { get; set; } = string.Empty;
+    public string PaymentMethod { get; set; } = string.Empty;
     public DateTimeOffset? CompletedAt { get; set; }
 }
 

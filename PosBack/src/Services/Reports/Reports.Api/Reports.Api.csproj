@@ -8,11 +8,13 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.12" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="10.0.14" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="10.3.1" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\BuildingBlocks\SharedKernel\SharedKernel.csproj" />
+    <ProjectReference Include="..\..\..\BuildingBlocks\Messaging\Messaging.csproj" />
   </ItemGroup>
 
 </Project>

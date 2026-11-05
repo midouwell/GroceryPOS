@@ -5,6 +5,8 @@ using Identity.Api.Infrastructure;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using SharedKernel.Persistence;
+using Identity.Api.Infrastructure.Persistence;
+using Microsoft.EntityFrameworkCore;
 
 namespace Identity.Api;
 
@@ -33,6 +35,8 @@ public class Program
         });
         builder.Services.AddSingleton<IPasswordHasher>(hasher);
         builder.Services.AddScoped<IdentityService>();
+        builder.Services.AddDbContext<IdentityDbContext>(options =>
+            options.UseSqlServer(builder.Configuration.GetConnectionString("IdentityDatabase")));
 
         var jwtKey = builder.Configuration["Jwt:SigningKey"]
             ?? throw new InvalidOperationException("Jwt:SigningKey must be configured.");

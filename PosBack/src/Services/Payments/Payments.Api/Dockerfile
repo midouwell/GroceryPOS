@@ -1,11 +1,8 @@
 FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
 WORKDIR /src
-COPY src/Services/Payments/Payments.Api/Payments.Api.csproj ./
-COPY src/BuildingBlocks/SharedKernel/SharedKernel.csproj /src/../../../BuildingBlocks/SharedKernel/
-RUN dotnet restore
-COPY src/Services/Payments/Payments.Api/ ./
-COPY src/BuildingBlocks/SharedKernel/ /BuildingBlocks/SharedKernel/
-RUN dotnet publish Payments.Api.csproj -c Release -o /out
+COPY . .
+RUN dotnet restore src/Services/Payments/Payments.Api/Payments.Api.csproj
+RUN dotnet publish src/Services/Payments/Payments.Api/Payments.Api.csproj -c Release -o /out
 
 FROM mcr.microsoft.com/dotnet/aspnet:10.0 AS runtime
 WORKDIR /app

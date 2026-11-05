@@ -6,7 +6,7 @@ public sealed record SaleItemResponse(string ProductId, string ProductName, stri
     decimal TaxRate, int Quantity, int LineTotalCents, int TaxCents);
 public sealed record SaleResponse(string Id, string SaleNumber, string CashierId, DateTimeOffset SaleDate,
     IReadOnlyList<SaleItemResponse> Items, int SubtotalCents, int TaxTotalCents, int GrandTotalCents,
-    string PaymentStatus, string Status, string PaymentId, DateTimeOffset? CompletedAt);
+    string PaymentStatus, string Status, string PaymentId, string PaymentMethod, DateTimeOffset? CompletedAt);
 public sealed record CheckoutResponse(SaleResponse Sale, ReceiptResponse Receipt);
 public sealed record ReceiptResponse(string ReceiptNumber, DateTimeOffset IssuedAt, string CashierId,
     IReadOnlyList<SaleItemResponse> Items, int SubtotalCents, int TaxTotalCents, int GrandTotalCents,

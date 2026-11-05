@@ -3,6 +3,7 @@ using Sales.Api.Domain;
 using Sales.Api.Dtos;
 using SharedKernel.Api;
 using SharedKernel.Persistence;
+using Messaging;
 
 namespace Sales.Api.Application;
 
@@ -27,15 +28,17 @@ public sealed class CheckoutService
     private readonly InventoryClient _inventory;
     private readonly PaymentClient _payments;
     private readonly IHttpContextAccessor _httpContextAccessor;
+    private readonly IEventBus _events;
 
     public CheckoutService(IJsonRepository<Sale> repository, ProductClient products, InventoryClient inventory,
-        PaymentClient payments, IHttpContextAccessor httpContextAccessor)
+        PaymentClient payments, IHttpContextAccessor httpContextAccessor, IEventBus events)
     {
         _repository = repository;
         _products = products;
         _inventory = inventory;
         _payments = payments;
         _httpContextAccessor = httpContextAccessor;
+        _events = events;
     }
 
     public async Task<CheckoutResponse> CheckoutAsync(string idempotencyKey, CheckoutRequest request, CancellationToken cancellationToken)
@@ -87,6 +90,8 @@ public sealed class CheckoutService
             sale.GrandTotalCents = grandTotal;
             if (existing is null)
                 await _repository.AddAsync(sale, candidate => candidate.Id, cancellationToken);
+            _events.Publish(new SaleCreatedEvent(Guid.NewGuid().ToString("N"), DateTimeOffset.UtcNow,
+                idempotencyKey, sale.Id, idempotencyKey, sale.GrandTotalCents), cancellationToken);
 
             try
             {
@@ -96,6 +101,7 @@ public sealed class CheckoutService
                     TenderedCents = request.TenderedCents
                 }, cancellationToken);
                 sale.PaymentId = payment.Id;
+                sale.PaymentMethod = request.PaymentMethod.Trim().ToLowerInvariant();
                 sale.PaymentStatus = payment.Status.Equals("Completed", StringComparison.OrdinalIgnoreCase) ||
                                      payment.Status.Equals("Mock", StringComparison.OrdinalIgnoreCase)
                     ? SalePaymentStatuses.Paid : SalePaymentStatuses.Failed;
@@ -117,6 +123,8 @@ public sealed class CheckoutService
                 sale.Status = SaleStatuses.Completed;
                 sale.CompletedAt = DateTimeOffset.UtcNow;
                 await _repository.UpdateAsync(sale.Id, sale, candidate => candidate.Id, cancellationToken);
+                _events.Publish(new SaleCompletedEvent(Guid.NewGuid().ToString("N"), DateTimeOffset.UtcNow,
+                    idempotencyKey, sale.Id, sale.SaleNumber, sale.GrandTotalCents), cancellationToken);
             }
             catch
             {
@@ -156,5 +164,5 @@ public sealed class CheckoutService
             sale.Items.Select(item => new SaleItemResponse(item.ProductId, item.ProductName, item.Sku, item.UnitPriceCents,
                 item.TaxRate, item.Quantity, item.LineTotalCents, item.TaxCents)).ToList(),
             sale.SubtotalCents, sale.TaxTotalCents, sale.GrandTotalCents, sale.PaymentStatus, sale.Status,
-            sale.PaymentId, sale.CompletedAt);
+            sale.PaymentId, sale.PaymentMethod, sale.CompletedAt);
 }

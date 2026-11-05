@@ -4,6 +4,8 @@ using Microsoft.IdentityModel.Tokens;
 using Payments.Api.Application;
 using Payments.Api.Domain;
 using SharedKernel.Persistence;
+using Microsoft.EntityFrameworkCore;
+using Payments.Api.Infrastructure.Persistence;
 
 namespace Payments.Api;
 
@@ -24,6 +26,8 @@ public class Program
         builder.Services.AddSingleton<CashPaymentGateway>();
         builder.Services.AddSingleton<MockCardPaymentGateway>();
         builder.Services.AddScoped<PaymentService>();
+        builder.Services.AddDbContext<PaymentsDbContext>(options =>
+            options.UseSqlServer(builder.Configuration.GetConnectionString("PaymentsDatabase")));
         var jwtKey = builder.Configuration["Jwt:SigningKey"] ?? throw new InvalidOperationException("Jwt:SigningKey must be configured.");
         builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
             options.TokenValidationParameters = new TokenValidationParameters
